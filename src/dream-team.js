@@ -16,9 +16,8 @@ const { NotImplementedError } = require('../extensions/index.js');
 function createDreamTeam(members) {
 	if (!Array.isArray(members)) return false;
 	let teamName = '';
-  members.forEach(teammate => {
-		if (typeof teammate === 'string') teamName += teammate.slice(0, 1).toUpperCase();
-	}, '');
+	members = members.filter(teammate => typeof teammate === 'string').sort((a, b) => a.trim().localeCompare(b.trim()));
+	members.forEach(elem => teamName += elem.trim().slice(0, 1).toUpperCase());
 	return teamName;
 }
 
