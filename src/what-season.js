@@ -12,6 +12,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 function getSeason(date) {
+	// throw new NotImplementedError('Not implemented');
   try {
 		let month = date.getMonth();
 		let test = date.getDate();
