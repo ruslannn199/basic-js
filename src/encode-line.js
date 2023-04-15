@@ -11,13 +11,19 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function encodeLine(s) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
-	let arr = Array.from(s), str = '';
-	for (let i = 0; i < s.length; i++) {
-		if (arr[i - 1] === arr[i]) {
-			
+  // throw new NotImplementedError('Not implemented');
+	let k, str = '', i, j;
+	for (i = 0; i < s.length; i++) {
+		k = 1;
+		for (j = i + 1; j < s.length; j++) {
+			if (s[i] === s[j]) k++;
+			else {
+				i = j - 1;
+				break;
+			}
+			if (j === s.length - 1) i = j;
 		}
+		k === 1 ? str += s[i] : str += `${k}${s[i]}`;
 	}
 	return str;
 }
